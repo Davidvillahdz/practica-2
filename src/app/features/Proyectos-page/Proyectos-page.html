@@ -1,0 +1,33 @@
+<h1>Proyectos-page works!</h1>
+
+<section>
+  <div>
+    <h3>Agregar Proyecto</h3>
+    <h4>Proyecto a Agregar: {{ name() }}</h4>
+
+    <input
+      type="text"
+      placeholder="Nombre del proyecto"
+      [ngModel]="name()"
+      (ngModelChange)="name.set($event)"
+    >
+
+    <input
+      type="text"
+      placeholder="Descripción del proyecto"
+      [ngModel]="descripcion()"
+      (ngModelChange)="descripcion.set($event)"
+    >
+
+    <button (click)="agregarProyecto()">Agregar</button>
+  </div>
+
+  <div>
+    <h3>Listado</h3>
+    <ul>
+      @for (proyecto of proyectos(); track proyecto.id) {
+        <li>{{ proyecto.nombre }} - {{ proyecto.descripcion }}</li>
+      }
+    </ul>
+  </div>
+</section>

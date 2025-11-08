@@ -1,30 +1,46 @@
-<h1>David</h1>
+<h1>Editar Perfil</h1>
+
+<section>
+  <label>
+    Nombre:
+    <input
+      type="text"
+      [ngModel]="name()"
+      (ngModelChange)="name.set($event)"
+    />
+  </label>
+  <br>
+
+  <label>
+    Apellido:
+    <input
+      type="text"
+      [ngModel]="lastName()"
+      (ngModelChange)="lastName.set($event)"
+    />
+  </label>
+  <br>
+
+  <label>
+    Edad:
+    <input
+      type="number"
+      [ngModel]="age()"
+      (ngModelChange)="age.set($event)"
+    />
+  </label>
+</section>
+
+<hr>
 
 <dl>
-  <dt>Nombre:</dt>
-  <dd>David</dd>
-
-  <dt>Apellido:</dt>
-  <dd>Villa</dd>
-
-  <dt>Edad:</dt>
-  <dd>20</dd>
-
   <dt>Nombre Completo:</dt>
-  <dd>Elian David Villa Hernández</dd>
+  <dd>{{ getFullName() }}</dd>
 
   <dt>Nombre y Apellido (Mayúsculas):</dt>
-  <dd>DAVID VILLA</dd>
+  <dd>{{ getFullNameUpperCase() }}</dd>
 </dl>
 
-<button (click)="changeData()">
-  Cambiar datos
-</button>
-
-<button (click)="changeAge()">
-  Cambiar edad
-</button>
-
-<button (click)="resetData()">
-  Reset
-</button>
+<button (click)="changeData()">Cambiar datos</button>
+<button (click)="changeAge()">Aumentar edad</button>
+<button (click)="resetData()">Reset</button>
