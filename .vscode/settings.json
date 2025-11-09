@@ -3,5 +3,6 @@
         "angular-*": {
             "skipStyle": true
         }
-    }
+    },
+    "liveServer.settings.multiRootWorkspaceName": "PRACTICA-2"
 }

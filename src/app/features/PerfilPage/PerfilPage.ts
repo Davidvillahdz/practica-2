@@ -9,9 +9,9 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PerfilPage {
-  name = signal('Juan');
-  lastName = signal('Alvarez');
-  age = signal(22);
+  name = signal('David');
+  lastName = signal('Villa');
+  age = signal(20);
 
   getFullName() {
     return `${this.name()} ${this.lastName()}`;
@@ -32,8 +32,8 @@ export class PerfilPage {
   }
 
   resetData() {
-    this.name.set('Juan');
-    this.lastName.set('Alvarez');
-    this.age.set(22);
+    this.name.set('David');
+    this.lastName.set('Villa');
+    this.age.set(20);
   }
 }
