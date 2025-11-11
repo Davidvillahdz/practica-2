@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import{ ProyectoInt } from './interfaces/Proyecto-int';
+import { ListadoProyecto } from './components/listado-proyecto/listado-proyecto';
 
 @Component({
   selector: 'app-proyectos-page',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,ListadoProyecto],
   templateUrl: './Proyectos-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

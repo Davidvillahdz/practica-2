@@ -1,1 +1,9 @@
-<p>Proyectos-dos works!</p>,
+<listado-proyecto 
+    listName="Listado de Proyectos" 
+    [proyectos]="proyectosService.proyectos()">
+</listado-proyecto>    
+<p>Aqui debe estar un componente que agregue al servicio</p>
+<add-proyecto
+    (newProyecto)="proyectosService.addProyecto($event)" 
+    (removeProyecto)="proyectosService.deleteProyecto()"
+   ></add-proyecto>

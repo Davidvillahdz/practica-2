@@ -10,14 +10,15 @@
       placeholder="Nombre del proyecto"
       [ngModel]="name()"
       (ngModelChange)="name.set($event)"
-    >
+    />
 
+    
     <input
       type="text"
       placeholder="Descripción del proyecto"
       [ngModel]="descripcion()"
       (ngModelChange)="descripcion.set($event)"
-    >
+    />
 
     <button (click)="agregarProyecto()">Agregar</button>
   </div>
@@ -25,9 +26,16 @@
   <div>
     <h3>Listado</h3>
     <ul>
+      
       @for (proyecto of proyectos(); track proyecto.id) {
         <li>{{ proyecto.nombre }} - {{ proyecto.descripcion }}</li>
       }
     </ul>
   </div>
+
+ 
+  <listado-proyecto
+    listName="Listado de Proyectos"
+    [proyectos]="proyectos()">
+    </listado-proyecto>
 </section>

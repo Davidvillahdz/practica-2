@@ -1,0 +1,23 @@
+<div>
+    <h3>Lista de Proyectos</h3>
+    <h4>Proyecto Agregar {{name()}}</h4>
+
+    <input 
+      type="text" 
+      placeholder="Nombre del proyecto"
+      [value]="name()"
+      (change)="changeName(txtName.value)"
+      #txtName
+    >
+
+    <input 
+      type="text" 
+      placeholder="Descripción del proyecto"
+      [value]="description()"
+      (change)="changeDescription(txtdescription.value)"
+      #txtdescription
+    >
+
+    <button (click)="addProyecto()">Agregar Proyecto</button>
+    <button (click)="deleteProyecto(1)">Eliminar </button>  
+  </div>
