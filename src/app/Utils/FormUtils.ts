@@ -1,4 +1,4 @@
-import { FormGroup, ValidationErrors } from '@angular/forms';
+import { FormArray, FormGroup, ValidationErrors } from '@angular/forms';
 
 export class FormUtils {
 static isValidField(form: FormGroup, fieldName: string): boolean | null { 
@@ -26,4 +26,16 @@ switch (key) {
 }
     return null;
     }
+static isValidFieldInArray(formArray: FormArray, index: number) {
+  return (
+    formArray.controls[index].errors && formArray.controls[index].touched
+  );
+}
+
+static getFieldErrorInArray(formArray: FormArray, index: number): string | null {
+  if (formArray.controls.length == 0) return null;
+
+  const errors = formArray.controls[index].errors ?? {};
+  return FormUtils.getTextError(errors);
+}
 }

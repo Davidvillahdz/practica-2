@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators, ReactiveFormsModule } from "@angular/forms";
-import { FormUtils } from '../../Utils/FormUtils';
+import { FormUtils } from '../../../Utils/FormUtils';
 
 @Component({
   selector: 'app-formulario-page',

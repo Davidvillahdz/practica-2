@@ -1,0 +1,100 @@
+<h2>Formularios: <small>Dinámicos</small></h2>
+
+<form
+  autocomplete="off"
+  [formGroup]="myForm"
+  (ngSubmit)="onSubmit()"
+>
+
+  <!-- Nombre -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input
+        class="form-control"
+        formControlName="name"
+        placeholder="Nombre del proyecto"
+      >
+
+      @if(formUtils.isValidField(myForm, 'name')){
+        <span class="form-text text-danger">
+          {{ formUtils.getFieldError(myForm, 'name') }}
+        </span>
+      }
+    </div>
+  </div>
+
+  <!-- Agregar Lenguaje -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Agregar lenguaje</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+
+        <input
+          class="form-control"
+          placeholder="Nuevo lenguaje"
+          [formControl]="newLenguaje"
+          (keydown.enter)="onAddToLenguajes(); $event.preventDefault()"
+        >
+
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="onAddToLenguajes()"
+        >
+          Agregar
+        </button>
+
+      </div>
+
+      @if(newLenguaje.invalid && newLenguaje.touched){
+        <span class="form-text text-danger">
+          Debe tener al menos 3 caracteres.
+        </span>
+      }
+    </div>
+  </div>
+<!-- Lista dinámica -->
+<div class="mb-3 row">
+  <label class="col-sm-3 col-form-label">Lenguajes</label>
+
+  <div class="col-sm-9" formArrayName="lenguajes">
+
+    @for(item of lenguajes.controls; track item; let i = $index) {
+
+      <div class="input-group mb-2">
+        <input class="form-control" [formControlName]="i">
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="onDeleteLenguaje(i)"
+        >
+          Eliminar
+        </button>
+      </div>
+
+      @if(formUtils.isValidFieldInArray(lenguajes, i)) {
+        <span class="form-text text-danger">
+          {{ formUtils.getFieldErrorInArray(lenguajes, i) }}
+        </span>
+      }
+    }
+
+    @if(formUtils.isValidField(myForm, 'lenguajes')){
+      <span class="form-text text-danger">Debe tener mínimo 3 lenguajes</span>
+    }
+
+  </div>
+</div>
+<!-- Botón Guardar -->
+<div class="mt-3 text-end">
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="myForm.invalid"
+  >
+    Guardar
+  </button>
+</div>
+
+</form>
